@@ -1,0 +1,25 @@
+{
+  "name": "jacmoe/yii2-tale-jade",
+  "description": "A Tale Jade for PHP integration for the Yii2 framework",
+  "keywords": ["yii2", "tale", "jade", "renderer"],
+  "type": "yii2-extension",
+  "license": "MIT",
+  "version": "1.0.1",
+  "authors": [
+    {
+      "name": "Jacob Moen",
+      "email": "jacmoe.dk@gmail.com",
+      "homepage": "http://jacmoe.dk"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "yiisoft/yii2": "*",
+    "talesoft/tale-jade": "^1.1"
+  },
+  "autoload" : {
+    "psr-4" : {
+      "jacmoe\\talejade\\" : "src/"
+    }
+  }
+}
