@@ -13,7 +13,7 @@ class JadeViewRenderer extends BaseViewRenderer
     * @var mixed The parser
     */
     protected $parser;
-    
+
     /**
     * @var string the directory or path alias pointing to where Haml cache will be stored.
     */
@@ -31,14 +31,14 @@ class JadeViewRenderer extends BaseViewRenderer
     {
         parent::init();
 
-        $this->parser = new Jade\Renderer();
-
         $this->parser = new Jade\Renderer([
             'adapterOptions' => [
-            'path' => Yii::getAlias($this->cachePath)
-        ]
+            //'path' => Yii::getAlias($this->cachePath),
+            'lifeTime' => 0,//3600 = 1 hour
+            ],
+            'pretty' => true,
         ]);
-        
+
         //$haml = new MtHaml\Environment('php', $this->options, $this->getFilters());
         //$this->parser = new \mervick\mthaml\override\Executor($haml, [
         //'cache' => Yii::getAlias($this->cachePath),
