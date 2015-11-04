@@ -4,7 +4,6 @@
   "keywords": ["yii2", "tale", "jade", "renderer"],
   "type": "yii2-extension",
   "license": "MIT",
-  "version": "1.0.1",
   "authors": [
     {
       "name": "Jacob Moen",
