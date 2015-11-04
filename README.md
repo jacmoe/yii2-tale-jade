@@ -3,8 +3,6 @@ Yii2 Tale Jade
 
 A Tale Jade for PHP integration for the Yii2 framework.  
 
-Extension provides a `ViewRenders` that would allow you to use Haml/Twig view template engines, using [Multi target HAML (MtHaml)](https://github.com/arnaud-lb/MtHaml) library.
-
 
 ## Requirements
 
@@ -37,7 +35,7 @@ return [
     ],
 ];
 ```
-  
+ 
 Rendering in Controllers:
 ```php
 class SiteController extends Controller
@@ -52,40 +50,10 @@ class SiteController extends Controller
 ```
 
 
-## Tale Jade Options
+## Tale Jade Configuration
 
-This is default options:
-```php
-    //....
-    'renderers' => [
-        'haml' => [
-            'class' => 'mervick\mthaml\HamlViewRenderer',
-            'cachePath' => '@runtime/Haml/cache',
-            'debug' => false,
-            'options' => [
-                'format' => 'html5',
-                // MtHaml escapes everything by default
-                'enable_escaper' => true,
-                'escape_html' => true,
-                'escape_attrs' => true,
-                'cdata' => true,
-                'autoclose' => array('meta', 'img', 'link', 'br', 'hr', 'input', 'area', 'param', 'col', 'base'),
-                'charset' => 'UTF-8',
-                'enable_dynamic_attrs' => true,
-            ],
-        ],
-        'twig' => [
-            'class' => 'mervick\mthaml\TwigViewRenderer',
-            'cachePath' => '@runtime/Twig/cache',
-            'debug' => false,
-            'options' => [
-                // Same as for haml, except "enable_escaper"
-                // Twig extension already supports auto escaping, so it turned off for MtHaml
-                'enable_escaper' => false,
-            ],
-        ],
-    //....
-```
+
+## Examples
 
 
 ## License
