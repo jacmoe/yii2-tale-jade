@@ -55,7 +55,7 @@ class SiteController extends Controller
 
 ## Example
 
-```php
+```jade
 -use yii\helpers\Html
 -use yii\bootstrap\Nav
 -use yii\bootstrap\NavBar
@@ -108,7 +108,24 @@ html(lang=Yii::$app->language)
 -$view->endPage()
 ```
 
+## Bugs worth mentioning
+### Code block
+While it should be allowed to do this:
+
+```jade
+        -
+          $menuItems[] = ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                          'url' => ['/site/logout'],'linkOptions' =>['data-method' => 'post']]
+```
+or this:
+```jade
+        -$menuItems[] = ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                          'url' => ['/site/logout'],'linkOptions' =>['data-method' => 'post']]
+```
+It will either error out or fail silently due to a bug in Tale Jade.
+
+That should hopefully get fixed soon. :)
+
 ## License
 
 Tale Jade extension for Yii2 Framework is released under the MIT license.
-
