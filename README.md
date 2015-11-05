@@ -124,6 +124,8 @@ or this:
 ```
 It will either error out or fail silently due to a bug in Tale Jade.
 
+The solution is to keep buffered code on one line, for now.
+
 That should hopefully get fixed soon. :)
 
 ## License
