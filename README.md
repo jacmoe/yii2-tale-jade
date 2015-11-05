@@ -81,7 +81,8 @@ html(lang=Yii::$app->language)
   body
     -$view->beginBody()
     .wrap
-      -NavBar::begin(['brandLabel' => 'Bugitor',
+      -
+        NavBar::begin(['brandLabel' => 'Bugitor',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => ['class' => 'navbar-inverse navbar-fixed-top',],])
 
