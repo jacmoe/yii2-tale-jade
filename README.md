@@ -32,7 +32,7 @@ return [
             'cachePath' => '@runtime/Jade/cache',
             'options' => [
               'pretty' => true,
-              'lifeTime' => 0,
+              'lifeTime' => 0,//3600 -> 1 hour
             ],
           ],
         ],
