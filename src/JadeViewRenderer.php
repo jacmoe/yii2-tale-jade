@@ -33,17 +33,12 @@ class JadeViewRenderer extends BaseViewRenderer
 
         $this->parser = new Jade\Renderer([
             'adapterOptions' => [
-            //'path' => Yii::getAlias($this->cachePath),
+            'path' => Yii::getAlias($this->cachePath),
             'lifeTime' => 0,//3600 = 1 hour
             ],
             'pretty' => true,
         ]);
 
-        //$haml = new MtHaml\Environment('php', $this->options, $this->getFilters());
-        //$this->parser = new \mervick\mthaml\override\Executor($haml, [
-        //'cache' => Yii::getAlias($this->cachePath),
-        //'debug' => $this->debug
-        //]);
     }
 
     /**
