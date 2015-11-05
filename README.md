@@ -113,26 +113,6 @@ html(lang=Yii::$app->language)
 -$view->endPage()
 ```
 
-## Bugs worth mentioning
-### Code block
-While it should be allowed to do this:
-
-```jade
-        -
-          $menuItems[] = ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                          'url' => ['/site/logout'],'linkOptions' =>['data-method' => 'post']]
-```
-or this:
-```jade
-        -$menuItems[] = ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                          'url' => ['/site/logout'],'linkOptions' =>['data-method' => 'post']]
-```
-It will either error out or fail silently due to a bug in Tale Jade.
-
-The solution is to keep buffered code on one line, for now.
-
-That should hopefully get fixed soon. :)
-
 ## License
 
 Tale Jade extension for Yii2 Framework is released under the MIT license.
