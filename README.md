@@ -54,6 +54,8 @@ class SiteController extends Controller
 }
 ```
 
+## Friends
+Tale Jade will work well with [Jade Gii Generator for Yii2](https://bitbucket.org/jacmoe/yii2-gii-jade) once yii2-gii-jade has been written.
 
 ## Tale Jade Configuration
 
