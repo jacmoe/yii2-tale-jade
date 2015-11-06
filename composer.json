@@ -14,7 +14,7 @@
   "require": {
     "php": ">=5.5.0",
     "yiisoft/yii2": "*",
-    "talesoft/tale-jade": "dev-master"
+    "talesoft/tale-jade": "*"
   },
   "autoload" : {
     "psr-4" : {
