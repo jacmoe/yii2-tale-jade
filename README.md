@@ -119,9 +119,7 @@ html(lang=Yii::$app->language)
 ## Links
 [Tale Jade for PHP](http://jade.talesoft.io/)
 
-[Jade Tutorial](http://jade-lang.com/tutorial/)
-
-[Jade interactive demo](http://jade-lang.com/demo/)
+[Jade Tutorial](http://www.learnjade.com/tour/intro/)
 
 
 ## License
