@@ -114,6 +114,14 @@ html(lang=Yii::$app->language)
 -$view->endPage()
 ```
 
+## Links
+[Tale Jade for PHP](http://jade.talesoft.io/)
+
+[Jade Tutorial](http://jade-lang.com/tutorial/)
+
+[Jade interactive demo](http://jade-lang.com/demo/)
+
+
 ## License
 
 Tale Jade extension for Yii2 Framework is released under the MIT license.
