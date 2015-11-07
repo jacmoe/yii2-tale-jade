@@ -18,8 +18,8 @@ Installation is recommended to be done via [composer](https://getcomposer.org) b
 composer require jacmoe/yii2-tale-jade "*"
 ```
 
-## Usage
-
+## Configuration
+### Add to renderers
 Add this to your `config/main.php` file:
 ```php
 return [
@@ -40,8 +40,26 @@ return [
     ],
   ];
 ```
- 
-Rendering in Controllers:
+### Set default layout
+You also need to change the default layout.
+
+You can do this either by setting the layout property of the individual controllers
+~~~php
+class SiteController extends Controller
+{
+  $layout = 'main.jade';
+~~~
+Or by setting it at the application level:
+
+~~~php
+return [
+  'layout' => 'main.jade',
+  'components' => [
+  ..
+~~~
+
+### Rendering
+To render a view:
 ```php
 class SiteController extends Controller
 {
@@ -53,6 +71,15 @@ class SiteController extends Controller
     //....
 }
 ```
+Notice that the extension (.jade) is needed.
+
+If you don't want to change that, then you can set the default view file extension in the main config:
+
+~~~php
+    'view' => [
+      'defaultExtension' => 'jade',
+      'renderers' => [
+~~~
 
 ## Friends
 Tale Jade will work well with [Jade Gii Generator for Yii2](https://bitbucket.org/jacmoe/yii2-gii-jade) once yii2-gii-jade has been written.
