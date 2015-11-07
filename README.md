@@ -73,7 +73,7 @@ class SiteController extends Controller
 ~~~
 Notice that the extension (.jade) is needed.
 
-If you don't want to change that, then you can set the default view file extension in the main config:
+If you don't want to have to specify the extension all over the place, then you can set the default view file extension in the main config, like this:
 
 ~~~php
     'view' => [
@@ -84,10 +84,9 @@ If you don't want to change that, then you can set the default view file extensi
 ## Friends
 Tale Jade will work well with [Jade Gii Generator for Yii2](https://bitbucket.org/jacmoe/yii2-gii-jade) once yii2-gii-jade has been written.
 
-## Tale Jade Configuration
+## Examples
 
-
-## Example
+### Main layout
 
 ~~~jade
 -use yii\helpers\Html
