@@ -144,7 +144,7 @@ html(lang=Yii::$app->language)
 
 ### Login
 
-~~~php
+~~~jade
 -use yii\helpers\Html
 -use yii\bootstrap\ActiveForm
 -$view->title = 'Login'
