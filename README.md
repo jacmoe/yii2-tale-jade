@@ -14,14 +14,14 @@ A Tale Jade for PHP integration for the Yii2 framework.
 ## Installation with Composer
 
 Installation is recommended to be done via [composer](https://getcomposer.org) by running:
-```bash
+~~~bash
 composer require jacmoe/yii2-tale-jade "*"
-```
+~~~
 
 ## Configuration
 ### Add to renderers
 Add this to your `config/main.php` file:
-```php
+~~~php
 return [
   //....
   'components' => [
@@ -39,7 +39,7 @@ return [
       ],
     ],
   ];
-```
+~~~
 ### Set default layout
 You also need to change the default layout.
 
@@ -60,7 +60,7 @@ return [
 
 ### Rendering
 To render a view:
-```php
+~~~php
 class SiteController extends Controller
 {
     //....
@@ -70,7 +70,7 @@ class SiteController extends Controller
     }
     //....
 }
-```
+~~~
 Notice that the extension (.jade) is needed.
 
 If you don't want to change that, then you can set the default view file extension in the main config:
@@ -89,7 +89,7 @@ Tale Jade will work well with [Jade Gii Generator for Yii2](https://bitbucket.or
 
 ## Example
 
-```jade
+~~~jade
 -use yii\helpers\Html
 -use yii\bootstrap\Nav
 -use yii\bootstrap\NavBar
@@ -141,7 +141,7 @@ html(lang=Yii::$app->language)
           !=Yii::powered()
     -$view->endBody()
 -$view->endPage()
-```
+~~~
 
 ## Links
 [Tale Jade for PHP](http://jade.talesoft.io/)
