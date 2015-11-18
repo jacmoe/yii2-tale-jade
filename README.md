@@ -164,6 +164,19 @@ html(lang=Yii::$app->language)
       -ActiveForm::end()
 ~~~
 
+## Dirty Tricks
+### The third-party trick
+If you've got a module for which you want to override views be means of a pathMap, then you will probably find yourself in a peculiar situation:
+1) Yii will render the php version of the view even if you've told Yii that the default extension is '.jade'.
+2) It does not matter if you delete the php view from the overridden view path, because then Yii will rudely use the module's php version of that particular view.
+3) If you temporarily delete the view from the module, Yii will complain and tell you that the view in your view path (that you know is present) does not exist.
+
+The solution is dirty:
+
+Just put an empty file with the same name in the module's view directory - for example 'profile.jade', without touching anything else. And voilà: Yii sees the jade version in the modules view directory and happily renders your view file 'profile.jade' in your own (overridden) directory.
+
+That really threw me for a loop and appears to be a bug in Yii. ;)
+
 ## Links
 [Tale Jade for PHP](http://jade.talesoft.io/)
 
