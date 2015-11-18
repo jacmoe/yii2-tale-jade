@@ -166,19 +166,32 @@ html(lang=Yii::$app->language)
 
 ## Dirty Tricks
 ### The third-party trick
-If you've got a module for which you want to override views by means of a `pathMap`, then you will probably find yourself in a peculiar situation: 
+Taken from my Yii2 bug report:
 
-1) Yii will render the php version of the view even if you've told Yii that the default extension is '.jade'. 
+*I am using the Tale Jade Yii renderer with Yii and it works great, except for modules.*
 
-2) It does not matter if you delete the php view from the overridden view path, because then Yii will rudely use the module's php version of that particular view. 
+*I am setting the default view extension to '.jade' and everything works with Yii::Application: if I have two view files like 'account.php' and 'account.jade', Yii will intelligently use the Jade version.*
 
-3) If you temporarily delete the view from the module, Yii will complain and tell you that the view in your view path (that you know is present) does not exist. 
-
-
-The solution is dirty: 
+*However, for modules, the behaviour is quite funky. ;D*
 
 
-Just put an empty file with the same name in the module's view directory - for example 'profile.jade', without touching anything else. And voilà: Yii sees the jade version in the modules view directory and happily renders your view file 'profile.jade' in your own (overridden) directory. 
+*I am using Dektrium/yii2-user and I have setup the pathmap for the view component.*
+
+*It works for php views, but when I change the overridden views to jade views, Yii rudely chooses to use the php versions from the user module..*
+
+*BUT...!*
+
+*If I create an empty view file in the Dektrium view folder, Yii suddenly chooses to respect my rules :lol:*
+
+
+*For example:*
+
+*I have `'@common/views/profile/show.php'` and Yii does indeed use that instead of `'@dektrium/user/views/profile/show.php'`*
+
+*When I change `'@common/views/profile/show.php'` to `'@common/views/profile/show.jade'` I would expect Yii to use that, but it doesn't.*
+
+*So, I create a completely empty show.jade and drop it in '@dektrium/user/views/profile/' and it works - Yii uses my overridden jade view file. :P*
+*Even if the original 'show.php' view file is present.*
 
 That really threw me for a loop and appears to be a bug in Yii. ;)
 
