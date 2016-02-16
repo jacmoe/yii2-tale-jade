@@ -82,8 +82,8 @@ If you don't want to have to specify the extension all over the place, then you 
       'renderers' => [
 ~~~
 
-## Friends
-Tale Jade will work well with [Jade Gii Generator for Yii2](https://bitbucket.org/jacmoe/yii2-gii-jade) once yii2-gii-jade has been written.
+## Related
+Yii2 Tale Jade works well with [Jade Gii Generator for Yii2](https://packagist.org/packages/jacmoe/yii2-gii-jade)
 
 ## Examples
 
