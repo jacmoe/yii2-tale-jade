@@ -37,9 +37,9 @@ class JadeViewRenderer extends BaseViewRenderer
         parent::init();
 
         $this->parser = new Jade\Renderer([
-          'cachePath' => Yii::getAlias('@runtime/Jade/cache'),
-          'lifeTime' => 0,
-          'pretty' => true
+          'cachePath' => Yii::getAlias($this->cachePath),
+          'lifeTime' => $this->options['lifeTime'],
+          'pretty' => $this->options['pretty']
         ]);
     }
 
