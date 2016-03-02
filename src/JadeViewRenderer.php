@@ -20,7 +20,7 @@ class JadeViewRenderer extends BaseViewRenderer
     public $cachePath = '@runtime/Jade/cache';
 
     public $options = array(
-      'lifeTime' => 0,//3600 = 1 hour
+      'lifeTime' => 3600,//3600 = 1 hour
       'pretty' => true,
     );
 
