@@ -195,6 +195,54 @@ Taken from my Yii2 bug report:
 
 That really threw me for a loop and appears to be a bug in Yii. ;)
 
+To overcome that problem, without dumping empty view files in third-party code, you can add this custom View component to your project:
+
+```php
+class View extends \yii\web\View {
+
+    /**
+     * Override to always pass the current context to render
+     * https://github.com/yiisoft/yii2/issues/4382
+	 * @inheritDoc
+	 */
+    public function render($view, $params = array(), $context = null)
+    {
+        if ($context === null) {
+            $context = $this->context;
+        }
+
+        return parent::render($view, $params, $context);
+    }
+
+    /**
+     * If the view is not found by normal means
+     * then use the theme pathmap to find it.
+	 * @inheritDoc
+	 */
+    protected function findViewFile($view, $context = null)
+    {
+        $path = $view . '.' . $this->defaultExtension;
+        if ($this->theme !== null) {
+            $path = $this->theme->applyTo($path);
+        }
+        $viewfile = parent::findViewFile($path, $context);
+
+        return $viewfile;
+    }
+
+}
+```
+
+And then, configure the View component in your config like this:
+
+```php
+        'view' => [
+            'class' => 'app\components\View',
+            'defaultExtension' => 'jade',
+```
+Not only will it allow you to override module views using a custom view extension (.jade), it will also enable you to override it with views that doesn't even exist in the overridden module!  
+Yii is a neat framework. :)
+
 ## Links
 [Tale Jade for PHP](http://jade.talesoft.io/)
 
