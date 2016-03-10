@@ -243,11 +243,64 @@ And then, configure the View component in your config like this:
 Not only will it allow you to override module views using a custom view extension (.jade), it will also enable you to override it with views that doesn't even exist in the overridden module!  
 Yii is a neat framework. :)
 
+## Why Tale Jade ?
+Why choose Tale Jade - and the yii2-tale-jade extension - over plain PHP or Twig or other template engines?
+
+Flexibility and minimal syntax! :)
+
+Besides being able to freely mix plain PHP and Jade there are two features that is especially cool about Tale Jade:  
+Includes and Mixins.
+
+### Includes
+With Tale Jade you can include other Jade templates, plain PHP, Javascript..
+
+Since the includes are compiled together in one go, you don't have to pass arguments to the includes like you would when using the Yii `render` function. All the variables/objects are available in the includes - the partials - just as if they all were on the same page.
+
+```
+include partials/_top.php
+include partials/_metavars.php
+
+doctype html
+html(lang=Yii::$app->language)
+  include partials/_head
+  body
+    -$view->beginBody()
+    #wrapper
+      #container
+        include partials/_header
+        main.container
+          !=$content
+    include partials/_footer
+    include partials/_gatrack.js
+    -$view->endBody()
+  -$view->endPage()
+```
+I is a good idea to separate code (PHP and JS) and markup, and includes makes that easy.
+
+### Mixins
+Mixins are to Tale Jade what simple functions are for Twig, except that if you need a mixin, you just write one. No need to register it with the engine.
+
+This is a mixin to format a date:
+```
+mixin date(date)
+  !=strftime('%d. %B, %Y', $date)
+```
+Since you can use the strftime function directly in the templates, this mixin just serves to keep the templates clean and the syntax neat.  
+Used like this:
+
+```
+  span.updated
+    small
+      +date($page->datetime)
+```
+Mixins are great for larger blocks of code with multiple arguments - think Yii widgets and Twig functions all in one.
+
 ## Links
-[Tale Jade for PHP](http://jade.talesoft.io/)
+* [Tale Jade for PHP](http://jade.talesoft.io/)
+* [Jade Tutorial](http://www.learnjade.com/tour/intro/)
 
-[Jade Tutorial](http://www.learnjade.com/tour/intro/)
-
+## Projects using yii2-tale-jade
+* [Pype](https://pype.jacmoe.dk) - Personal Yii Page Engine - flat-file CMS powered by Yii.
 
 ## License
 
