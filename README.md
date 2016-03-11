@@ -198,13 +198,22 @@ That really threw me for a loop and appears to be a bug in Yii. ;)
 To overcome that problem, without dumping empty view files in third-party code, you can add this custom View component to your project:
 
 ```php
+namespace app\components;
+
+use Yii;
+use yii\base\InvalidCallException;
+
+/**
+ * This View class overrides render and findViewFile
+ * to use the theme view files
+ */
 class View extends \yii\web\View {
 
     /**
      * Override to always pass the current context to render
      * https://github.com/yiisoft/yii2/issues/4382
-	 * @inheritDoc
-	 */
+     * @inheritDoc
+     */
     public function render($view, $params = array(), $context = null)
     {
         if ($context === null) {
@@ -217,17 +226,45 @@ class View extends \yii\web\View {
     /**
      * If the view is not found by normal means
      * then use the theme pathmap to find it.
-	 * @inheritDoc
-	 */
+     * @inheritDoc
+     */
     protected function findViewFile($view, $context = null)
     {
-        $path = $view . '.' . $this->defaultExtension;
+        if (strncmp($view, '@', 1) === 0) {
+            // e.g. "@app/views/main"
+            $file = Yii::getAlias($view);
+        } elseif (strncmp($view, '//', 2) === 0) {
+            // e.g. "//layouts/main"
+            $file = Yii::$app->getViewPath() . DIRECTORY_SEPARATOR . ltrim($view, '/');
+        } elseif (strncmp($view, '/', 1) === 0) {
+            // e.g. "/site/index"
+            if (Yii::$app->controller !== null) {
+                $file = Yii::$app->controller->module->getViewPath() . DIRECTORY_SEPARATOR . ltrim($view, '/');
+            } else {
+                throw new InvalidCallException("Unable to locate view file for view '$view': no active controller.");
+            }
+        } elseif ($context instanceof ViewContextInterface) {
+            $file = $context->getViewPath() . DIRECTORY_SEPARATOR . $view;
+        } elseif (($currentViewFile = $this->getViewFile()) !== false) {
+            $file = dirname($currentViewFile) . DIRECTORY_SEPARATOR . $view;
+        } else {
+            //TODO: figure out why we even end up here.. ?
+            $file = $context->getViewPath() . DIRECTORY_SEPARATOR . $view;
+            //throw new InvalidCallException("Unable to resolve view file for view '$view': no active view context.");
+        }
+
+        if (pathinfo($file, PATHINFO_EXTENSION) !== '') {
+            return $file;
+        }
+        $path = $file . '.' . $this->defaultExtension;
         if ($this->theme !== null) {
             $path = $this->theme->applyTo($path);
         }
-        $viewfile = parent::findViewFile($path, $context);
+        if ($this->defaultExtension !== 'php' && !is_file($path)) {
+            $path = $file . '.php';
+        }
 
-        return $viewfile;
+        return $path;
     }
 
 }
