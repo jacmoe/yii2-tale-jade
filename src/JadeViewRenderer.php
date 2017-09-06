@@ -57,6 +57,6 @@ class JadeViewRenderer extends BaseViewRenderer
     public function render($view, $file, $params)
     {
         $this->parser->addPath(dirname($file));
-        return $this->parser->render(pathinfo($file, PATHINFO_BASENAME), $params + ['app' => Yii::$app, 'this' => $view, 'view' => $view]);
+        return $this->parser->render(pathinfo($file, PATHINFO_BASENAME), $params + ['app' => Yii::$app, 'view' => $view]);
     }
 }
