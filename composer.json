@@ -13,5 +13,5 @@
   ],
   "require": {
     "jacmoe/yii2-pug": "*"
-  },
+  }
 }
