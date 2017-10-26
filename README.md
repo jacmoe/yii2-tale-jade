@@ -1,5 +1,11 @@
 Yii2 Tale Jade
 =========================
+
+Achtung!
+=========================
+**This project has moved to https://github.com/jacmoe/yii2-pug - sorry for any inconvenience!**
+
+
 [![Latest Stable Version](https://poser.pugx.org/jacmoe/yii2-tale-jade/v/stable)](https://packagist.org/packages/jacmoe/yii2-tale-jade) [![Total Downloads](https://poser.pugx.org/jacmoe/yii2-tale-jade/downloads)](https://packagist.org/packages/jacmoe/yii2-tale-jade) [![Latest Unstable Version](https://poser.pugx.org/jacmoe/yii2-tale-jade/v/unstable)](https://packagist.org/packages/jacmoe/yii2-tale-jade) [![License](https://poser.pugx.org/jacmoe/yii2-tale-jade/license)](https://packagist.org/packages/jacmoe/yii2-tale-jade)
 
 A Tale Jade for PHP integration for the Yii2 framework.  
