@@ -12,13 +12,6 @@
     }
   ],
   "require": {
-    "php": ">=5.5.0",
-    "yiisoft/yii2": "*",
-    "talesoft/tale-jade": "dev-master"
+    "jacmoe/yii2-pug": "*"
   },
-  "autoload" : {
-    "psr-4" : {
-      "jacmoe\\talejade\\" : "src/"
-    }
-  }
 }
