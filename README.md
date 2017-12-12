@@ -3,7 +3,7 @@ Yii2 Tale Jade
 
 Achtung!
 =========================
-**This project has moved to https://github.com/jacmoe/yii2-pug - sorry for any inconvenience!**
+**This project is superceded by https://github.com/pug-php/pug-yii2 **
 
 
 ------------------------------------------------------------------------------
